@@ -57,8 +57,10 @@ namespace ExtendedTest
             player._Position = new Vector2(150, 150);
 
             Sprite log = new Sprite();
-            log.LoadContent("Art/log", this);
+            log.LoadContent("Art/tree", this);
             log._Position = new Vector2(300, 300);
+            log._Tag = Sprite.SpriteType.kTreeType;
+            log._CurrentState = Sprite.SpriteState.kStateActive;
             gameObjectList.Add(log);
 
             mouseCursor = new Sprite();

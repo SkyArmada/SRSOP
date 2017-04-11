@@ -13,22 +13,43 @@ namespace ExtendedTest
         Vector2 Destination = Vector2.Zero;
         bool atDestination = true;
         MouseState previousMouseState;
+        List<Item> inventory;
+
+        public enum CurrentAction
+        {
+            kActionWC,
+            kActionMine,
+            kActionNone
+        }
+
+        private CurrentAction action = CurrentAction.kActionNone;
+
         public Player()
         {
-
+            inventory = new List<Item>();
         }
 
         public override void Update(GameTime gameTime, List<Sprite> gameObjectList)
         {
+            Vector2 originalPos = _Position;
             handleInput(gameTime);
-            HandleCollistion(gameObjectList);
+            var collidedWith = collisionCheck(gameObjectList);
+            if (collidedWith != null)
+            {
+                _Position = originalPos;
+                atDestination = true;
+                if(collidedWith._Tag == SpriteType.kTreeType)
+                {
+                    action = CurrentAction.kActionWC;
+                }
+
+            }
             Animate(0);
             base.Update(gameTime, gameObjectList);
         }
 
         private void handleInput(GameTime gameTime)
         {
-            float maxSpeed = 5f;
             var delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
             MouseState mouseState = Mouse.GetState();
 
@@ -41,38 +62,7 @@ namespace ExtendedTest
 
             if(!atDestination)
             {
-                Console.WriteLine(Math.Abs(Destination.X - _Position.X));
-                if (Math.Abs(Destination.X - _Position.X) > 5)
-                {
-                    if (Destination.X > _Position.X)
-                    {
-                        _Position.X += maxSpeed;
-                    }
-                    else if (Destination.X < _Position.X)
-                    {
-                        _Position.X -= maxSpeed;
-                    }
-
-                }
-
-                if (Math.Abs(Destination.Y - _Position.Y) > 5)
-                {
-                    if (Destination.Y > _Position.Y)
-                    {
-                        _Position.Y += maxSpeed;
-                    }
-                    else if (Destination.Y < _Position.Y)
-                    {
-                        _Position.Y -= maxSpeed;
-                    }
-                }
-                
-
-                if (Vector2.Distance(Destination, _Position) <= 5)
-                {
-                    //_Position = Destination;
-                    atDestination = true;
-                }
+                findPath();
             }
 
             #region Keyboard State
@@ -115,12 +105,55 @@ namespace ExtendedTest
             //LockInBounds();
         }
 
-        private void HandleCollistion(List<Sprite> gameObjectList)
+        private void findPath()
         {
-            return;
-            foreach (Sprite obj in gameObjectList)
+            float maxSpeed = 5f;
+            if (Math.Abs(Destination.X - _Position.X) > 5)
             {
+                if (Destination.X > _Position.X)
+                {
+                    _Position.X += maxSpeed;
+                }
+                else if (Destination.X < _Position.X)
+                {
+                    _Position.X -= maxSpeed;
+                }
+
             }
+
+            if (Math.Abs(Destination.Y - _Position.Y) > 5)
+            {
+                if (Destination.Y > _Position.Y)
+                {
+                    _Position.Y += maxSpeed;
+                }
+                else if (Destination.Y < _Position.Y)
+                {
+                    _Position.Y -= maxSpeed;
+                }
+            }
+
+
+            if (Vector2.Distance(Destination, _Position) <= 5)
+            {
+                //_Position = Destination;
+                atDestination = true;
+            }
+        }
+
+        private Sprite collisionCheck(List<Sprite> gameObjectList)
+        {
+            foreach (Sprite sprite in gameObjectList)
+            {
+                    if (sprite._CurrentState == SpriteState.kStateActive)
+                    {
+                        if (_BoundingBox.Intersects(sprite._BoundingBox))
+                        {
+                            return sprite;
+                        }
+                    }
+            }
+            return null;
         }
     }
 }

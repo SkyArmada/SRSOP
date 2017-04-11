@@ -53,8 +53,7 @@ namespace ExtendedTest
         public enum SpriteType
         {
             kPlayerType,
-            kBulletType,
-            kSilverfishType,
+            kTreeType,
             kNoneType
         }
 
