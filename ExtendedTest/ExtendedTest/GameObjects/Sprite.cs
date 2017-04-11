@@ -76,11 +76,11 @@ namespace ExtendedTest
             }
         }
 
-        public virtual void LoadContent(string path, Game1 tehGame)
+        public virtual void LoadContent(string path, Game1 tehGame, bool animated = false)
         {
             theGame = tehGame;
             _Texture = theGame.Content.Load<Texture2D>(path);
-            if (!isAnimated)
+            if (!animated)
             {
                 SetupAnimation(1, 1, 1, false);
             }

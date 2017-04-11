@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Graphics;
 using MonoGame.Extended.Tiled;
+using System.Collections.Generic;
 
 namespace ExtendedTest
 {
@@ -14,11 +15,12 @@ namespace ExtendedTest
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Sprite player;
+        Player player;
         private Camera2D _camera;
         public CircleF test;
         private TiledMap _map;
         private TiledMapRenderer _mapRenderer;
+        List<Sprite> gameObjectList;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -36,7 +38,8 @@ namespace ExtendedTest
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            player = new Sprite();
+            player = new Player();
+            gameObjectList = new List<Sprite>();
             base.Initialize();
         }
 
@@ -48,7 +51,13 @@ namespace ExtendedTest
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            player.LoadContent("Art/Player", this);
+            player._Position = new Vector2(150, 150);
 
+            Sprite log = new Sprite();
+            log.LoadContent("Art/log", this);
+            log._Position = new Vector2(300, 300);
+            gameObjectList.Add(log);
             // TODO: use this.Content to load your game content here
         }
 
@@ -68,12 +77,20 @@ namespace ExtendedTest
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            if(this.IsActive)
+            {
+                if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                    Exit();
+                player.Update(gameTime, gameObjectList);
+                foreach (Sprite sprite in gameObjectList)
+                {
+                    sprite.Update(gameTime, gameObjectList);
+                }
+                // TODO: Add your update logic here
 
-            // TODO: Add your update logic here
+                base.Update(gameTime);
 
-            base.Update(gameTime);
+            }
         }
 
         /// <summary>
@@ -83,9 +100,15 @@ namespace ExtendedTest
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            spriteBatch.Begin();
+            player.Draw(spriteBatch);
+            foreach (Sprite sprite in gameObjectList)
+            {
+                sprite.Draw(spriteBatch);
+            }
             // TODO: Add your drawing code here
             base.Draw(gameTime);
+            spriteBatch.End();
         }
     }
 }
