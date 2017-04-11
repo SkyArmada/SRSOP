@@ -21,6 +21,8 @@ namespace ExtendedTest
         private TiledMap _map;
         private TiledMapRenderer _mapRenderer;
         List<Sprite> gameObjectList;
+        MouseState previousMouseState;
+        Sprite mouseCursor;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -58,6 +60,9 @@ namespace ExtendedTest
             log.LoadContent("Art/log", this);
             log._Position = new Vector2(300, 300);
             gameObjectList.Add(log);
+
+            mouseCursor = new Sprite();
+            mouseCursor.LoadContent("Art/log", this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -81,6 +86,12 @@ namespace ExtendedTest
             {
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
+
+                MouseState mouseState = Mouse.GetState();
+                if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton != ButtonState.Pressed)
+                {
+                    mouseCursor._Position = new Vector2(mouseState.Position.X, mouseState.Position.Y);
+                }
                 player.Update(gameTime, gameObjectList);
                 foreach (Sprite sprite in gameObjectList)
                 {
@@ -107,6 +118,7 @@ namespace ExtendedTest
                 sprite.Draw(spriteBatch);
             }
             // TODO: Add your drawing code here
+            mouseCursor.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();
         }

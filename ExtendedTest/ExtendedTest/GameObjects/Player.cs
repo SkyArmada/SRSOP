@@ -41,28 +41,36 @@ namespace ExtendedTest
 
             if(!atDestination)
             {
-                if(Destination.X > _Position.X)
+                Console.WriteLine(Math.Abs(Destination.X - _Position.X));
+                if (Math.Abs(Destination.X - _Position.X) > 5)
                 {
-                    _Position.X += maxSpeed;
-                }
-                else if(Destination.X < _Position.X)
-                {
-                    _Position.X -= maxSpeed;
+                    if (Destination.X > _Position.X)
+                    {
+                        _Position.X += maxSpeed;
+                    }
+                    else if (Destination.X < _Position.X)
+                    {
+                        _Position.X -= maxSpeed;
+                    }
+
                 }
 
-                if (Destination.Y > _Position.Y)
+                if (Math.Abs(Destination.Y - _Position.Y) > 5)
                 {
-                    _Position.Y += maxSpeed;
+                    if (Destination.Y > _Position.Y)
+                    {
+                        _Position.Y += maxSpeed;
+                    }
+                    else if (Destination.Y < _Position.Y)
+                    {
+                        _Position.Y -= maxSpeed;
+                    }
                 }
-                else if (Destination.Y < _Position.Y)
-                {
-                    _Position.Y -= maxSpeed;
-                }
+                
 
-                Console.WriteLine(Vector2.Distance(Destination, _Position));
                 if (Vector2.Distance(Destination, _Position) <= 5)
                 {
-                    _Position = Destination;
+                    //_Position = Destination;
                     atDestination = true;
                 }
             }
