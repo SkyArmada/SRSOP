@@ -13,7 +13,8 @@ namespace ExtendedTest
         Vector2 Destination = Vector2.Zero;
         bool atDestination = true;
         MouseState previousMouseState;
-        List<Item> inventory;
+        public List<Item> inventory;
+        Object currentTarget = null;
 
         public enum CurrentAction
         {
@@ -41,7 +42,14 @@ namespace ExtendedTest
                 if(collidedWith._Tag == SpriteType.kTreeType)
                 {
                     action = CurrentAction.kActionWC;
+                    currentTarget = (Tree)collidedWith;
+
                 }
+
+            }
+            if(action == CurrentAction.kActionWC)
+            {
+                (currentTarget as Tree).getChopped(this);
 
             }
             Animate(0);
@@ -58,6 +66,7 @@ namespace ExtendedTest
             {
                 Destination = new Vector2(mouseState.Position.X, mouseState.Position.Y);
                 atDestination = false;
+                action = CurrentAction.kActionNone;
             }
 
             if(!atDestination)
@@ -154,6 +163,11 @@ namespace ExtendedTest
                     }
             }
             return null;
+        }
+
+        public void stopAction()
+        {
+            action = CurrentAction.kActionNone;
         }
     }
 }

@@ -8,15 +8,15 @@ namespace ExtendedTest
 {
     class Item
     {
-        private int id;
+        private int itemID;
         private String name;
         private double weight;
         private String image;
         private int saleValue;
 
-        public Item()
+        public Item(int id)
         {
-
+            itemID = id;
         }
     }
 }

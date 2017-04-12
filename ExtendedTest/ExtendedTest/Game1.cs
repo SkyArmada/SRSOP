@@ -56,12 +56,12 @@ namespace ExtendedTest
             player.LoadContent("Art/Player", this);
             player._Position = new Vector2(150, 150);
 
-            Sprite log = new Sprite();
-            log.LoadContent("Art/tree", this);
-            log._Position = new Vector2(300, 300);
-            log._Tag = Sprite.SpriteType.kTreeType;
-            log._CurrentState = Sprite.SpriteState.kStateActive;
-            gameObjectList.Add(log);
+            Tree testTree = new Tree(Tree.TreeType.kNormalTree);
+            testTree.LoadContent("Art/tree", this);
+            testTree._Position = new Vector2(300, 300);
+            testTree._Tag = Sprite.SpriteType.kTreeType;
+            testTree._CurrentState = Sprite.SpriteState.kStateActive;
+            gameObjectList.Add(testTree);
 
             mouseCursor = new Sprite();
             mouseCursor.LoadContent("Art/log", this);

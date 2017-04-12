@@ -50,3 +50,8 @@
 /processorParam:TextureFormat=Color
 /build:Art/tree.png
 
+#begin Fonts/Fipps-Regular.otf
+/importer:
+/processor:
+/build:Fonts/Fipps-Regular.otf
+
