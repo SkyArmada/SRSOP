@@ -74,3 +74,20 @@
 /processorParam:TextureFormat=Color
 /build:Art/inventoryBG2.png
 
+#begin Tilemaps/gfgfg.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Tilemaps/gfgfg.png
+
+#begin Tilemaps/testmap.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/build:Tilemaps/testmap.tmx
+

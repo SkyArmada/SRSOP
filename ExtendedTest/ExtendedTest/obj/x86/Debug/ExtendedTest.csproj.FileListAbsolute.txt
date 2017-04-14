@@ -61,3 +61,5 @@ C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\obj\x8
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\tree.xnb
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\InventoryBG.xnb
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\inventoryBG2.xnb
+C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\testmap.xnb
+C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\gfgfg.xnb

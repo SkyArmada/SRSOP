@@ -83,11 +83,13 @@
     <Content Include="Content\Art\log.png" />
     <Content Include="Content\Art\Player.png" />
     <Content Include="Content\Art\tree.png" />
+    <Content Include="Content\Tilemaps\gfgfg.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.manifest" />
+    <None Include="Content\Tilemaps\testmap.tmx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

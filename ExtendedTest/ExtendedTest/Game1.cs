@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Graphics;
 using MonoGame.Extended.Tiled;
+using MonoGame.Extended.ViewportAdapters;
 using System;
 using System.Collections.Generic;
 
@@ -83,6 +84,10 @@ namespace ExtendedTest
             mouseCursor = new Sprite();
             mouseCursor.LoadContent("Art/log", Content);
 
+
+            _map = Content.Load<TiledMap>("Tilemaps/testmap");
+            _mapRenderer = new TiledMapRenderer(GraphicsDevice);
+
             //List<Sprite> test = new List<Sprite>();
             //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
 
@@ -135,6 +140,18 @@ namespace ExtendedTest
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
+
+
+
+            var viewMatrix = _camera.GetViewMatrix();
+            var projectionMatrix = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width,
+                GraphicsDevice.Viewport.Height, 0, 0f, -1f);
+
+            // painter's algorithm; just draw things in the expected order
+
+            var backgroundLayer = _map.GetLayer("Tile Layer 1");
+            _mapRenderer.Draw(backgroundLayer, ref viewMatrix, ref projectionMatrix);
+
             player.Draw(spriteBatch);
             foreach (Sprite sprite in gameObjectList)
             {
