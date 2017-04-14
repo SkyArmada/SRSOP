@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace ExtendedTest
 {
@@ -13,34 +14,25 @@ namespace ExtendedTest
     {
         public Texture2D _Texture;
         public Vector2 _Position;
-        public Game1 theGame;
         public bool _Draw = true;
         public int _HP;
         public bool _LockInScreen = false;
         public float speed = 0f;
-        public int midpoint = 160;
         public int startHP = 1;
-        public float lifeTime = 2.0f;
         //for inheritance
         public Sprite parent = null;
         public List<Sprite> _ChildrenList;
         public bool enemy = false;
         //for animation
-        private float timeElapsed = 0;
-        private int frameNum = 0;
         public int frameWidth;
         public int frameHeight;
-        int FPS = 1;
-        int Frames = 1;
-        int StateNum;
-        bool animLooping = false;
         public bool _FlipX = false;
         public bool _FlipY = false;
         public float _zOrder;
         public float _Scale = 1.0f;
         public Color _MyColor = Color.White;
         public float _Rotation = 0.0f;
-        public bool isAnimated = false;
+        public List<Sprite> parentList;
 
         public enum SpriteState
         {
@@ -75,14 +67,11 @@ namespace ExtendedTest
             }
         }
 
-        public virtual void LoadContent(string path, Game1 tehGame, bool animated = false)
+        public virtual void LoadContent(string path, ContentManager content)
         {
-            theGame = tehGame;
-            _Texture = theGame.Content.Load<Texture2D>(path);
-            if (!animated)
-            {
-                SetupAnimation(1, 1, 1, false);
-            }
+            _Texture = content.Load<Texture2D>(path);
+            frameHeight = _Texture.Height;
+            frameWidth = _Texture.Width;
         }
 
         public virtual void Update(GameTime gameTime, List<Sprite> gameObjectList)
@@ -105,43 +94,14 @@ namespace ExtendedTest
                     LockInBounds();
                 }
             }
-            timeElapsed += (float)gameTime.ElapsedGameTime.TotalSeconds;
-        }
-
-        public void SetupAnimation(int frames, int fps, int states, bool looping)
-        {
-            Frames = frames;
-            FPS = fps;
-            frameWidth = _Texture.Width / frames;
-            frameHeight = _Texture.Height / states;
-            animLooping = looping;
-        }
-
-        public void Animate(int stateNum)
-        {
-            float TPF = 1.0f / FPS;
-            if (timeElapsed >= TPF)
-            {
-                frameNum++;
-                if (animLooping && frameNum > Frames)
-                {
-                    frameNum = 0;
-                }
-                else
-                {
-
-                }
-                frameNum %= Frames;
-                timeElapsed -= TPF;
-            }
-            StateNum = stateNum;
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (_Draw)
             {
-                Rectangle sr = new Rectangle((frameWidth * frameNum), (frameHeight * StateNum), frameWidth, frameHeight);
+                //Rectangle sr = new Rectangle((frameWidth * frameNum), (frameHeight * StateNum), frameWidth, frameHeight);
+                Rectangle sr = new Rectangle(0, 0, frameWidth, frameHeight);
                 if (!_FlipX && !_FlipY)
                 {
                     spriteBatch.Draw(_Texture, _Position, sr, _MyColor, _Rotation, _Center, _Scale, SpriteEffects.None, 0f);
@@ -233,16 +193,12 @@ namespace ExtendedTest
             _FlipY = false;
             _LockInScreen = false;
             if (_ChildrenList != null)
-            {
-                if (_ChildrenList.Count >= 1)
-                {
-                    _ChildrenList.Clear();
-                }
+            { 
+                _ChildrenList.Clear();
             }
             _MyColor = Color.White;
             parent = null;
             speed = 0f;
-            midpoint = 160;
             Setup();
         }
 

@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended;
 using MonoGame.Extended.Graphics;
 using MonoGame.Extended.Tiled;
+using System;
 using System.Collections.Generic;
 
 namespace ExtendedTest
@@ -23,6 +24,8 @@ namespace ExtendedTest
         List<Sprite> gameObjectList;
         MouseState previousMouseState;
         Sprite mouseCursor;
+        Sprite inventoryBG;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -53,18 +56,36 @@ namespace ExtendedTest
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            player.LoadContent("Art/Player", this);
+            player._Texture = Content.Load<Texture2D>("Art/Player");
+            player.LoadContent("Art/Player", Content);
             player._Position = new Vector2(150, 150);
 
             Tree testTree = new Tree(Tree.TreeType.kNormalTree);
-            testTree.LoadContent("Art/tree", this);
+            testTree.LoadContent("Art/tree", Content);
             testTree._Position = new Vector2(300, 300);
             testTree._Tag = Sprite.SpriteType.kTreeType;
             testTree._CurrentState = Sprite.SpriteState.kStateActive;
+            testTree.parentList = gameObjectList;
             gameObjectList.Add(testTree);
 
+            Tree testTree2 = new Tree(Tree.TreeType.kNormalTree);
+            testTree2.LoadContent("Art/tree", Content);
+            testTree2._Position = new Vector2(10, 10);
+            testTree2._Tag = Sprite.SpriteType.kTreeType;
+            testTree2._CurrentState = Sprite.SpriteState.kStateActive;
+            testTree2.parentList = gameObjectList;
+            gameObjectList.Add(testTree2);
+
+            inventoryBG = new Sprite();
+            inventoryBG.LoadContent("Art/inventoryBG", Content); 
+            inventoryBG._Position = new Vector2(450, 450);
+
             mouseCursor = new Sprite();
-            mouseCursor.LoadContent("Art/log", this);
+            mouseCursor.LoadContent("Art/log", Content);
+
+            //List<Sprite> test = new List<Sprite>();
+            //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
+
             // TODO: use this.Content to load your game content here
         }
 
@@ -102,7 +123,7 @@ namespace ExtendedTest
                 // TODO: Add your update logic here
 
                 base.Update(gameTime);
-
+                previousMouseState = mouseState;
             }
         }
 
@@ -120,6 +141,7 @@ namespace ExtendedTest
                 sprite.Draw(spriteBatch);
             }
             // TODO: Add your drawing code here
+            inventoryBG.Draw(spriteBatch);
             mouseCursor.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();

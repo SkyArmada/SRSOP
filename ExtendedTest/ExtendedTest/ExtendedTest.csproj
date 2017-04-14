@@ -42,7 +42,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
+    <Compile Include="GameObjects\AnimatedSprite.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Tree.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,8 +78,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Art\inventoryBG.png" />
+    <Content Include="Content\Art\inventoryBG2.png" />
     <Content Include="Content\Art\log.png" />
     <Content Include="Content\Art\Player.png" />
+    <Content Include="Content\Art\tree.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

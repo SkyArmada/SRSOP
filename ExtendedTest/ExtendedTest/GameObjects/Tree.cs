@@ -30,13 +30,13 @@ namespace ExtendedTest
             switch(treeType)
             {
                 case TreeType.kNormalTree:
-                    difficulty = 300;
-                    break;
-                case TreeType.kOakTree:
                     difficulty = 600;
                     break;
+                case TreeType.kOakTree:
+                    difficulty = 1200;
+                    break;
                 case TreeType.kCedarTree:
-                    difficulty = 900;
+                    difficulty = 1800;
                     break;
                     
                 default:
@@ -59,7 +59,6 @@ namespace ExtendedTest
             else
             {
                 hits++;
-                Console.WriteLine(hits);
             }
         }
     }

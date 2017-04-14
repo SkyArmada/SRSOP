@@ -12,6 +12,8 @@ namespace ExtendedTest
     {
         Vector2 Destination = Vector2.Zero;
         bool atDestination = true;
+        bool movingX = false;
+        bool movingY = false;
         MouseState previousMouseState;
         public List<Item> inventory;
         Object currentTarget = null;
@@ -33,6 +35,8 @@ namespace ExtendedTest
         public override void Update(GameTime gameTime, List<Sprite> gameObjectList)
         {
             Vector2 originalPos = _Position;
+            movingX = false;
+            movingY = false;
             handleInput(gameTime);
             var collidedWith = collisionCheck(gameObjectList);
             if (collidedWith != null)
@@ -49,10 +53,9 @@ namespace ExtendedTest
             }
             if(action == CurrentAction.kActionWC)
             {
-                (currentTarget as Tree).getChopped(this);
+                //(currentTarget as Tree).getChopped(this);
 
             }
-            Animate(0);
             base.Update(gameTime, gameObjectList);
         }
 
@@ -122,10 +125,12 @@ namespace ExtendedTest
                 if (Destination.X > _Position.X)
                 {
                     _Position.X += maxSpeed;
+                    movingX = true;
                 }
                 else if (Destination.X < _Position.X)
                 {
                     _Position.X -= maxSpeed;
+                    movingX = true;
                 }
 
             }
@@ -135,10 +140,12 @@ namespace ExtendedTest
                 if (Destination.Y > _Position.Y)
                 {
                     _Position.Y += maxSpeed;
+                    movingY = true;
                 }
                 else if (Destination.Y < _Position.Y)
                 {
                     _Position.Y -= maxSpeed;
+                    movingY = true;
                 }
             }
 
@@ -154,13 +161,37 @@ namespace ExtendedTest
         {
             foreach (Sprite sprite in gameObjectList)
             {
-                    if (sprite._CurrentState == SpriteState.kStateActive)
+                if (sprite._CurrentState == SpriteState.kStateActive)
+                {
+                    if (_BoundingBox.Intersects(sprite._BoundingBox))
                     {
-                        if (_BoundingBox.Intersects(sprite._BoundingBox))
+                        if(movingX)
                         {
-                            return sprite;
+                            if((_BoundingBox.Right > sprite._BoundingBox.Left) && (_BoundingBox.Left < sprite._BoundingBox.Left))
+                            {
+                                Console.WriteLine("On player right?");
+                            }
+                            else if ((_BoundingBox.Left < sprite._BoundingBox.Right) && (_BoundingBox.Right > sprite._BoundingBox.Right))
+                            {
+                                Console.WriteLine("On player left?");
+                            }
                         }
+
+                        if(movingY)
+                        {
+                            if ((_BoundingBox.Bottom > sprite._BoundingBox.Top) && (_BoundingBox.Top < sprite._BoundingBox.Top))
+                            {
+                                Console.WriteLine("On player bottom?");
+                            }
+                            else if ((_BoundingBox.Top < sprite._BoundingBox.Bottom) && (_BoundingBox.Bottom > sprite._BoundingBox.Bottom))
+                            {
+                                Console.WriteLine("On player top?");
+                            }
+                        }
+
+                        return sprite;
                     }
+                }
             }
             return null;
         }
