@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
-using MonoGame.Extended.Graphics;
-using MonoGame.Extended.Tiled;
-using MonoGame.Extended.ViewportAdapters;
 using System;
 using System.Collections.Generic;
 
@@ -18,15 +14,13 @@ namespace ExtendedTest
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Player player;
-        private Camera2D _camera;
-        public CircleF test;
-        private TiledMap _map;
-        private TiledMapRenderer _mapRenderer;
         List<Sprite> gameObjectList;
         MouseState previousMouseState;
         Sprite mouseCursor;
         Sprite inventoryBG;
-
+        TileMap testMap;
+        double fps = 0;
+        double elapsedTime = 0;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -84,10 +78,7 @@ namespace ExtendedTest
             mouseCursor = new Sprite();
             mouseCursor.LoadContent("Art/log", Content);
 
-
-            _map = Content.Load<TiledMap>("Tilemaps/testmap");
-            _mapRenderer = new TiledMapRenderer(GraphicsDevice);
-
+            testMap = new TileMap("Content/Tilemaps/testmap.tmx", Content);
             //List<Sprite> test = new List<Sprite>();
             //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
 
@@ -127,6 +118,9 @@ namespace ExtendedTest
                 }
                 // TODO: Add your update logic here
 
+                //Show FPS
+                Console.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
+
                 base.Update(gameTime);
                 previousMouseState = mouseState;
             }
@@ -141,17 +135,7 @@ namespace ExtendedTest
             GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
-
-
-            var viewMatrix = _camera.GetViewMatrix();
-            var projectionMatrix = Matrix.CreateOrthographicOffCenter(0, GraphicsDevice.Viewport.Width,
-                GraphicsDevice.Viewport.Height, 0, 0f, -1f);
-
-            // painter's algorithm; just draw things in the expected order
-
-            var backgroundLayer = _map.GetLayer("Tile Layer 1");
-            _mapRenderer.Draw(backgroundLayer, ref viewMatrix, ref projectionMatrix);
-
+            testMap.Draw(spriteBatch);
             player.Draw(spriteBatch);
             foreach (Sprite sprite in gameObjectList)
             {
