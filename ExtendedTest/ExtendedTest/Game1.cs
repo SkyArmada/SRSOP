@@ -22,7 +22,7 @@ namespace ExtendedTest
         Sprite inventoryBG;
         TileMap testMap;
         Camera  camera;
-
+        Texture2D logTex;
         double fps = 0;
         double elapsedTime = 0;
 
@@ -57,40 +57,44 @@ namespace ExtendedTest
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            LoadPlayerContent();
+            LoadGUI();
+            LoadMapInfo();
+            LoadItemTextures();
+
+            //List<Sprite> test = new List<Sprite>();
+            //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
+
+            // TODO: use this.Content to load your game content here
+        }
+
+        private void LoadPlayerContent()
+        {
             player._Texture = Content.Load<Texture2D>("Art/Player");
             player.LoadContent("Art/Player", Content);
             player._Position = new Vector2(150, 150);
+        }
 
-            //Tree testTree = new Tree(Tree.TreeType.kNormalTree);
-            //testTree.LoadContent("Art/tree", Content);
-            //testTree._Position = new Vector2(300, 300);
-            //testTree._Tag = Sprite.SpriteType.kTreeType;
-            //testTree._CurrentState = Sprite.SpriteState.kStateActive;
-            //testTree.parentList = gameObjectList;
-            //gameObjectList.Add(testTree);
-
-            //Tree testTree2 = new Tree(Tree.TreeType.kNormalTree);
-            //testTree2.LoadContent("Art/tree", Content);
-            //testTree2._Position = new Vector2(10, 10);
-            //testTree2._Tag = Sprite.SpriteType.kTreeType;
-            //testTree2._CurrentState = Sprite.SpriteState.kStateActive;
-            //testTree2.parentList = gameObjectList;
-            //gameObjectList.Add(testTree2);
-
+        private void LoadGUI()
+        {
             inventoryBG = new Sprite();
-            inventoryBG.LoadContent("Art/inventoryBG", Content); 
+            inventoryBG.LoadContent("Art/inventoryBG", Content);
             inventoryBG._Position = new Vector2(450, 450);
 
             mouseCursor = new Sprite();
             mouseCursor.LoadContent("Art/log", Content);
+        }
 
+        private void LoadMapInfo()
+        {
             testMap = new TileMap("Content/Tilemaps/testmap.tmx", Content);
 
             TmxList<TmxObject> ObjectList = testMap.findObjects();
 
-            foreach(TmxObject thing in ObjectList)
+            foreach (TmxObject thing in ObjectList)
             {
-                if(thing.Type.Equals("tree"))
+                if (thing.Type.Equals("tree"))
                 {
                     Tree anotherTree = new Tree(Tree.TreeType.kNormalTree);
                     anotherTree.LoadContent("Art/tree", Content);
@@ -101,10 +105,11 @@ namespace ExtendedTest
                     gameObjectList.Add(anotherTree);
                 }
             }
-            //List<Sprite> test = new List<Sprite>();
-            //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
+        }
 
-            // TODO: use this.Content to load your game content here
+        private void LoadItemTextures()
+        {
+            logTex = Content.Load<Texture2D>("Art/log");
         }
 
         /// <summary>
@@ -125,6 +130,7 @@ namespace ExtendedTest
         {
             if(this.IsActive)
             {
+                // TODO: Add your update logic here
                 if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                     Exit();
 
@@ -134,39 +140,46 @@ namespace ExtendedTest
                     mouseCursor._Position = camera.ToWorld(new Vector2(mouseState.Position.X, mouseState.Position.Y)); //;
                     player.setDestination(mouseCursor._Position);
                 }
+
                 player.Update(gameTime, gameObjectList);
+
                 foreach (Sprite sprite in gameObjectList)
                 {
                     sprite.Update(gameTime, gameObjectList);
                 }
-                // TODO: Add your update logic here
 
-                //Show FPS
-                //Console.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
 
-                KeyboardState state = Keyboard.GetState();
-                if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
-                {
-                    this.camera.Position = new Vector2(this.camera.Position.X - 5, this.camera.Position.Y);
-                }
-                else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
-                {
-                    this.camera.Position = new Vector2(this.camera.Position.X + 5, this.camera.Position.Y);
-                }
-                if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
-                {
-                    this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y - 5);
-                }
-                else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
-                {
-                    this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y + 5);
-                }
-                camera.Update(gameTime);
+                ProcessCamera(gameTime);
 
 
                 base.Update(gameTime);
+                //Show FPS
+                //Console.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
                 previousMouseState = mouseState;
             }
+        }
+
+        private void ProcessCamera(GameTime gameTime)
+        {
+            KeyboardState state = Keyboard.GetState();
+            if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
+            {
+                this.camera.Position = new Vector2(this.camera.Position.X - 5, this.camera.Position.Y);
+            }
+            else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
+            {
+                this.camera.Position = new Vector2(this.camera.Position.X + 5, this.camera.Position.Y);
+            }
+            if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
+            {
+                this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y - 5);
+            }
+            else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
+            {
+                this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y + 5);
+            }
+
+            camera.Update(gameTime);
         }
 
         /// <summary>
@@ -175,19 +188,25 @@ namespace ExtendedTest
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            // TODO: Add your drawing code here
             GraphicsDevice.Clear(Color.ForestGreen);
             spriteBatch.Begin(camera);
 
-
-            camera.Debug.FpsCounter;
+            
             testMap.Draw(spriteBatch);
             player.Draw(spriteBatch);
             foreach (Sprite sprite in gameObjectList)
             {
                 sprite.Draw(spriteBatch);
             }
-            // TODO: Add your drawing code here
-            inventoryBG.Draw(spriteBatch);
+            //inventoryBG.Draw(spriteBatch);
+            for (int i = 0; i < player.inventory.Count; i++)
+            {
+                if(player.inventory[i].myType == Item.ItemType.ItemLog)
+                {
+                    player.inventory[i].Draw(spriteBatch, new Vector2(i * 30, -20), logTex);
+                }
+            }
             mouseCursor.Draw(spriteBatch);
             base.Draw(gameTime);
             spriteBatch.End();

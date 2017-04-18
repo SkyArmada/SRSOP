@@ -53,9 +53,14 @@ namespace ExtendedTest
             }
             if(action == CurrentAction.kActionWC)
             {
-                //(currentTarget as Tree).getChopped(this);
+                Chop(currentTarget as Tree);
+            }
+            foreach(Item item in inventory)
+            {
+                Console.Write(item._Name + " ");
 
             }
+            Console.WriteLine("");
             base.Update(gameTime, gameObjectList);
         }
 
@@ -200,6 +205,15 @@ namespace ExtendedTest
                 }
             }
             return null;
+        }
+
+        private void Chop(Tree tree)
+        {
+            Item item = tree.getChopped();
+            if(item != null)
+            {
+                inventory.Add(item);
+            }
         }
 
         public void stopAction()

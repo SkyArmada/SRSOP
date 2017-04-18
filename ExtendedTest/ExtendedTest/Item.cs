@@ -3,20 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace ExtendedTest
 {
     class Item
     {
-        private int itemID;
-        private String name;
-        private double weight;
-        private String image;
-        private int saleValue;
+        public  String _Name;
+        public double _Weight;
+        public String _Image;
+        public int _SaleValue;
 
-        public Item(int id)
+        public enum ItemType
         {
-            itemID = id;
+            ItemLog, ItemNone, ItemError
+        }
+
+        public ItemType myType = ItemType.ItemNone;
+        
+
+        public void Draw(SpriteBatch spritebatch, Vector2 Pos, Texture2D tex)
+        {
+            spritebatch.Draw(tex, Pos, Color.White);
         }
     }
 }

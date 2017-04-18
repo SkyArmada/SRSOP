@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="GameObjects\AnimatedSprite.cs" />
+    <Compile Include="InventoryManager.cs" />
+    <Compile Include="GameObjects\Items\Log.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameObjects\Tile.cs" />
     <Compile Include="GameObjects\Tilemap.cs" />

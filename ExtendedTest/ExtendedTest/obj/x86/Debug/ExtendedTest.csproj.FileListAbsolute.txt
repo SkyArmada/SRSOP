@@ -39,7 +39,6 @@ C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Wi
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\ExtendedTest.exe
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\ExtendedTest.pdb
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\MonoGame.Framework.dll
-C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Newtonsoft.Json.dll
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\TiledSharp.dll
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.dll
@@ -50,7 +49,6 @@ C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Wi
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XInput.dll
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\MonoGame.Framework.xml
-C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Newtonsoft.Json.xml
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.xml
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
@@ -98,3 +96,4 @@ D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.c
 D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.exe
 D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.pdb
 D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Comora.dll
+C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Comora.dll

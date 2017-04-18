@@ -45,20 +45,21 @@ namespace ExtendedTest
             }
         }
 
-        public void getChopped(Player chopper)
+        public Item getChopped()
         {
             Random ran = new Random();
             int randomNumber = ran.Next(0, difficulty);
             if(randomNumber == 0)
             {
                 Console.WriteLine("Dead Tree");
-                chopper.inventory.Add(new Item(1));
-                chopper.stopAction();
                 this.ReceiveDamage(1);
+                Log log = new Log();
+                return log;
             }
             else
             {
                 hits++;
+                return null;
             }
         }
     }

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</SourceFile>
-  <SourceTime>2017-04-17T22:24:35.6840593-05:00</SourceTime>
-  <DestFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/testmap.xnb</DestFile>
-  <DestTime>2017-04-17T22:24:38.410688-05:00</DestTime>
+  <SourceFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</SourceFile>
+  <SourceTime>2017-04-18T13:53:49.301674-05:00</SourceTime>
+  <DestFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/testmap.xnb</DestFile>
+  <DestTime>2017-04-18T14:10:26.4673316-05:00</DestTime>
   <Importer>TiledMapImporter</Importer>
-  <ImporterTime>2017-03-22T04:47:56-05:00</ImporterTime>
+  <ImporterTime>2017-04-18T13:53:49.5994729-05:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>
-  <ProcessorTime>2017-03-22T04:47:56-05:00</ProcessorTime>
+  <ProcessorTime>2017-04-18T13:53:49.5994729-05:00</ProcessorTime>
   <Dependencies />
   <BuildAsset />
   <BuildOutput />

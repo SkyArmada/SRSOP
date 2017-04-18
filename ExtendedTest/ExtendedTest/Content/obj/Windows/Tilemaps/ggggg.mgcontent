@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/ggggg.png</SourceFile>
-  <SourceTime>2017-04-17T21:00:12.7207671-05:00</SourceTime>
-  <DestFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/ggggg.xnb</DestFile>
-  <DestTime>2017-04-17T21:02:06.0389811-05:00</DestTime>
+  <SourceFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/ggggg.png</SourceFile>
+  <SourceTime>2017-04-18T13:53:49.3006713-05:00</SourceTime>
+  <DestFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/ggggg.xnb</DestFile>
+  <DestTime>2017-04-18T14:10:26.4863819-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2017-03-01T09:05:36-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
