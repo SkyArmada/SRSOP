@@ -63,3 +63,38 @@ C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\obj\x8
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.pdb
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\ggggg.png
 C:\Users\Richard.Ellzy\Desktop\New folder\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.csprojResolveAssemblyReference.cache
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\ggggg.png
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\gfgfg.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\testmap.tmx
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\inventoryBG.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\inventoryBG2.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\log.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\Player.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Art\tree.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\ggggg.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Content\Tilemaps\testmap.xnb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\ExtendedTest.exe
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\ExtendedTest.pdb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\MonoGame.Framework.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\TiledSharp.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XInput.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct3D9.dll
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\MonoGame.Framework.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.XInput.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\SharpDX.Direct3D9.xml
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.csprojResolveAssemblyReference.cache
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.exe
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\obj\x86\Debug\ExtendedTest.pdb
+D:\Gamedev\Monogame\SRSOP\ExtendedTest\ExtendedTest\bin\Windows\x86\Debug\Comora.dll

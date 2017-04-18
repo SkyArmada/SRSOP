@@ -4,12 +4,12 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Art/log.png</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Art/Player.png</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Art/tree.png</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Art/inventoryBG.png</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Art/inventoryBG2.png</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</File>
-    <File>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/ggggg.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Art/log.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Art/Player.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Art/tree.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Art/inventoryBG.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Art/inventoryBG2.png</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</File>
+    <File>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/ggggg.png</File>
   </SourceFiles>
 </SourceFileCollection>

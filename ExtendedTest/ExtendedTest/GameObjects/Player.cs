@@ -65,12 +65,12 @@ namespace ExtendedTest
             MouseState mouseState = Mouse.GetState();
 
 
-            if(mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton != ButtonState.Pressed)
-            {
-                Destination = new Vector2(mouseState.Position.X, mouseState.Position.Y);
-                atDestination = false;
-                action = CurrentAction.kActionNone;
-            }
+            //if(mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton != ButtonState.Pressed)
+            //{
+            //    Destination = new Vector2(mouseState.Position.X, mouseState.Position.Y);
+            //    atDestination = false;
+            //    action = CurrentAction.kActionNone;
+            //}
 
             if(!atDestination)
             {
@@ -115,6 +115,12 @@ namespace ExtendedTest
 
             previousMouseState = mouseState;
             //LockInBounds();
+        }
+
+        public void setDestination(Vector2 dest)
+        {
+            Destination = dest;
+            atDestination = false;
         }
 
         private void findPath()

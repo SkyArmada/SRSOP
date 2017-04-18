@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Comora;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using TiledSharp;
 
 namespace ExtendedTest
 {
@@ -19,8 +21,11 @@ namespace ExtendedTest
         Sprite mouseCursor;
         Sprite inventoryBG;
         TileMap testMap;
+        Camera  camera;
+
         double fps = 0;
         double elapsedTime = 0;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -40,6 +45,7 @@ namespace ExtendedTest
             // TODO: Add your initialization logic here
             player = new Player();
             gameObjectList = new List<Sprite>();
+            camera = new Camera(GraphicsDevice);
             base.Initialize();
         }
 
@@ -55,21 +61,21 @@ namespace ExtendedTest
             player.LoadContent("Art/Player", Content);
             player._Position = new Vector2(150, 150);
 
-            Tree testTree = new Tree(Tree.TreeType.kNormalTree);
-            testTree.LoadContent("Art/tree", Content);
-            testTree._Position = new Vector2(300, 300);
-            testTree._Tag = Sprite.SpriteType.kTreeType;
-            testTree._CurrentState = Sprite.SpriteState.kStateActive;
-            testTree.parentList = gameObjectList;
-            gameObjectList.Add(testTree);
+            //Tree testTree = new Tree(Tree.TreeType.kNormalTree);
+            //testTree.LoadContent("Art/tree", Content);
+            //testTree._Position = new Vector2(300, 300);
+            //testTree._Tag = Sprite.SpriteType.kTreeType;
+            //testTree._CurrentState = Sprite.SpriteState.kStateActive;
+            //testTree.parentList = gameObjectList;
+            //gameObjectList.Add(testTree);
 
-            Tree testTree2 = new Tree(Tree.TreeType.kNormalTree);
-            testTree2.LoadContent("Art/tree", Content);
-            testTree2._Position = new Vector2(10, 10);
-            testTree2._Tag = Sprite.SpriteType.kTreeType;
-            testTree2._CurrentState = Sprite.SpriteState.kStateActive;
-            testTree2.parentList = gameObjectList;
-            gameObjectList.Add(testTree2);
+            //Tree testTree2 = new Tree(Tree.TreeType.kNormalTree);
+            //testTree2.LoadContent("Art/tree", Content);
+            //testTree2._Position = new Vector2(10, 10);
+            //testTree2._Tag = Sprite.SpriteType.kTreeType;
+            //testTree2._CurrentState = Sprite.SpriteState.kStateActive;
+            //testTree2.parentList = gameObjectList;
+            //gameObjectList.Add(testTree2);
 
             inventoryBG = new Sprite();
             inventoryBG.LoadContent("Art/inventoryBG", Content); 
@@ -79,6 +85,22 @@ namespace ExtendedTest
             mouseCursor.LoadContent("Art/log", Content);
 
             testMap = new TileMap("Content/Tilemaps/testmap.tmx", Content);
+
+            TmxList<TmxObject> ObjectList = testMap.findObjects();
+
+            foreach(TmxObject thing in ObjectList)
+            {
+                if(thing.Type.Equals("tree"))
+                {
+                    Tree anotherTree = new Tree(Tree.TreeType.kNormalTree);
+                    anotherTree.LoadContent("Art/tree", Content);
+                    anotherTree._Position = new Vector2((int)thing.X, (int)thing.Y);
+                    anotherTree._Tag = Sprite.SpriteType.kTreeType;
+                    anotherTree._CurrentState = Sprite.SpriteState.kStateActive;
+                    anotherTree.parentList = gameObjectList;
+                    gameObjectList.Add(anotherTree);
+                }
+            }
             //List<Sprite> test = new List<Sprite>();
             //test = gameObjectList.FindAll(x => x._Tag == Sprite.SpriteType.kTreeType);
 
@@ -107,9 +129,10 @@ namespace ExtendedTest
                     Exit();
 
                 MouseState mouseState = Mouse.GetState();
-                if (mouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton != ButtonState.Pressed)
+                if (mouseState.LeftButton == ButtonState.Pressed )
                 {
-                    mouseCursor._Position = new Vector2(mouseState.Position.X, mouseState.Position.Y);
+                    mouseCursor._Position = camera.ToWorld(new Vector2(mouseState.Position.X, mouseState.Position.Y)); //;
+                    player.setDestination(mouseCursor._Position);
                 }
                 player.Update(gameTime, gameObjectList);
                 foreach (Sprite sprite in gameObjectList)
@@ -119,7 +142,27 @@ namespace ExtendedTest
                 // TODO: Add your update logic here
 
                 //Show FPS
-                Console.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
+                //Console.WriteLine(1 / gameTime.ElapsedGameTime.TotalSeconds);
+
+                KeyboardState state = Keyboard.GetState();
+                if (state.IsKeyDown(Keys.A) || state.IsKeyDown(Keys.Left))
+                {
+                    this.camera.Position = new Vector2(this.camera.Position.X - 5, this.camera.Position.Y);
+                }
+                else if (state.IsKeyDown(Keys.D) || state.IsKeyDown(Keys.Right))
+                {
+                    this.camera.Position = new Vector2(this.camera.Position.X + 5, this.camera.Position.Y);
+                }
+                if (state.IsKeyDown(Keys.W) || state.IsKeyDown(Keys.Up))
+                {
+                    this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y - 5);
+                }
+                else if (state.IsKeyDown(Keys.S) || state.IsKeyDown(Keys.Down))
+                {
+                    this.camera.Position = new Vector2(this.camera.Position.X, this.camera.Position.Y + 5);
+                }
+                camera.Update(gameTime);
+
 
                 base.Update(gameTime);
                 previousMouseState = mouseState;
@@ -132,9 +175,11 @@ namespace ExtendedTest
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.ForestGreen);
+            spriteBatch.Begin(camera);
 
+
+            camera.Debug.FpsCounter;
             testMap.Draw(spriteBatch);
             player.Draw(spriteBatch);
             foreach (Sprite sprite in gameObjectList)

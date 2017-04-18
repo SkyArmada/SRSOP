@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</SourceFile>
-  <SourceTime>2017-04-17T11:30:59.9500749-05:00</SourceTime>
-  <DestFile>C:/Users/Richard.Ellzy/Desktop/New folder/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/testmap.xnb</DestFile>
-  <DestTime>2017-04-17T13:17:24.8777725-05:00</DestTime>
+  <SourceFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/Tilemaps/testmap.tmx</SourceFile>
+  <SourceTime>2017-04-17T22:24:35.6840593-05:00</SourceTime>
+  <DestFile>D:/Gamedev/Monogame/SRSOP/ExtendedTest/ExtendedTest/Content/bin/Windows/Tilemaps/testmap.xnb</DestFile>
+  <DestTime>2017-04-17T22:24:38.410688-05:00</DestTime>
   <Importer>TiledMapImporter</Importer>
   <ImporterTime>2017-03-22T04:47:56-05:00</ImporterTime>
   <Processor>TiledMapProcessor</Processor>

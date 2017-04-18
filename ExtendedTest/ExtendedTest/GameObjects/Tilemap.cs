@@ -75,6 +75,11 @@ namespace ExtendedTest
             }
         }
 
+        public TmxList<TmxObject> findObjects()
+        {
+            return map.ObjectGroups["Object Layer 1"].Objects;
+        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
             //for (var i = 0; i < map.Layers[0].Tiles.Count; i++)
